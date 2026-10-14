@@ -11,7 +11,8 @@ public enum SetMapSrv: ROS2ServiceType {
         requestTypeName: "nav_msgs/srv/SetMap_Request",
         responseTypeName: "nav_msgs/srv/SetMap_Response",
         requestTypeHash: "RIHS01_5a83a0c20af4d79248fc3287524bf358b603fb5a05818b5ec85b50fa6e5d0266",
-        responseTypeHash: "RIHS01_e7251879322c7b12285b9c191d68d27495b6dede051f3cd79b0bf334147b7375"
+        responseTypeHash: "RIHS01_e7251879322c7b12285b9c191d68d27495b6dede051f3cd79b0bf334147b7375",
+        serviceTypeHash: "RIHS01_5e11a5b2ca53d8ae85b666a019f16c9904ebc787828f1f566c4e048a1ddedfb4"
     )
 
     public typealias Request = SetMapRequest

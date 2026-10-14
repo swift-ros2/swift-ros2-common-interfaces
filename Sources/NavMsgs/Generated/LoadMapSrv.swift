@@ -11,7 +11,8 @@ public enum LoadMapSrv: ROS2ServiceType {
         requestTypeName: "nav_msgs/srv/LoadMap_Request",
         responseTypeName: "nav_msgs/srv/LoadMap_Response",
         requestTypeHash: "RIHS01_0f8fe3aac433c977d7c2f8b57ab1c3a17677e24880d76919b69e4208e99f5132",
-        responseTypeHash: "RIHS01_e7970ddf9f58e10d34b5eae6d2baca31b2b3e2f2fe6d082b3aae2a5f92777b2a"
+        responseTypeHash: "RIHS01_e7970ddf9f58e10d34b5eae6d2baca31b2b3e2f2fe6d082b3aae2a5f92777b2a",
+        serviceTypeHash: "RIHS01_1a192ac56c40fed2767dac26f0b371785372276bd465c902676d2dca135aae5a"
     )
 
     public typealias Request = LoadMapRequest

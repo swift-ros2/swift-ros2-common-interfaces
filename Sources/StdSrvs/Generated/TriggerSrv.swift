@@ -11,7 +11,8 @@ public enum TriggerSrv: ROS2ServiceType {
         requestTypeName: "std_srvs/srv/Trigger_Request",
         responseTypeName: "std_srvs/srv/Trigger_Response",
         requestTypeHash: "RIHS01_d010825374ce8918e72bfd826c82603e60f45419e932ea976f807b74a863a199",
-        responseTypeHash: "RIHS01_2d946c21e2fc3f1e9ca6986a8191d85fcc70097a8bb7771a053564bc47009cdf"
+        responseTypeHash: "RIHS01_2d946c21e2fc3f1e9ca6986a8191d85fcc70097a8bb7771a053564bc47009cdf",
+        serviceTypeHash: "RIHS01_eeff2cd6fa5ad9d27cdf4dec64818317839b62f212a91e6b5304b634b2062c5f"
     )
 
     public typealias Request = TriggerRequest

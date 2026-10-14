@@ -11,7 +11,8 @@ public enum AddDiagnosticsSrv: ROS2ServiceType {
         requestTypeName: "diagnostic_msgs/srv/AddDiagnostics_Request",
         responseTypeName: "diagnostic_msgs/srv/AddDiagnostics_Response",
         requestTypeHash: "RIHS01_e0b6572a07c2b3ca2c4f2acf742297661f6ceb50f5baa4f9305b6094cf950146",
-        responseTypeHash: "RIHS01_e7070a2373c892c4cf071dcd90405d7696187eb2ff0e40d8b6472a04a4b73d22"
+        responseTypeHash: "RIHS01_e7070a2373c892c4cf071dcd90405d7696187eb2ff0e40d8b6472a04a4b73d22",
+        serviceTypeHash: "RIHS01_6b91084c9f8bffd9b0c1f6883e0e8e491a831f4fc6c6aec77a4efaf3f1ea90b5"
     )
 
     public typealias Request = AddDiagnosticsRequest

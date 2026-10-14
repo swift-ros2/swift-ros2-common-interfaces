@@ -11,7 +11,8 @@ public enum SelfTestSrv: ROS2ServiceType {
         requestTypeName: "diagnostic_msgs/srv/SelfTest_Request",
         responseTypeName: "diagnostic_msgs/srv/SelfTest_Response",
         requestTypeHash: "RIHS01_3bb94b497e74e9beed2dddc7212d3ae596696d30413bd1550fe932fc20efb8a4",
-        responseTypeHash: "RIHS01_489da82e00dce6671cb0ff423a0f0939b546336fbfe49d6c7e64c9b89f898f57"
+        responseTypeHash: "RIHS01_489da82e00dce6671cb0ff423a0f0939b546336fbfe49d6c7e64c9b89f898f57",
+        serviceTypeHash: "RIHS01_df1e4e54a814a16ccc77471e9239618d46818e8d0e3b45ad6f8c34c6e2abfef6"
     )
 
     public typealias Request = SelfTestRequest
