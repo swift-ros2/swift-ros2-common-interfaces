@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0-rc.2
+
+- Requires swift-ros2-rosidl 1.0.0-rc.2.
+- Every service carries its service-level type hash (`ROS2ServiceTypeInfo.serviceTypeHash`),
+  and `Tf2Msgs.LookupTransformAction` its SendGoal and GetResult service hashes; rmw_zenoh_cpp
+  keys services and action services by these hashes. No other generated value changed.
+
 ## 1.0.0-rc.1
 
 - All of ros2/common_interfaces except actionlib_msgs, plus tf2_msgs, generated from Humble,
