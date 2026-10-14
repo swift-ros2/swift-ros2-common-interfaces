@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.0.0-rc.1
 
 - All of ros2/common_interfaces except actionlib_msgs, plus tf2_msgs, generated from Humble,
   Jazzy, Kilted and Lyrical IDL; one module per ROS package and the CommonInterfaces umbrella.
