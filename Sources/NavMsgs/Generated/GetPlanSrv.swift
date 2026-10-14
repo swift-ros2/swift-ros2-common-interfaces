@@ -11,7 +11,8 @@ public enum GetPlanSrv: ROS2ServiceType {
         requestTypeName: "nav_msgs/srv/GetPlan_Request",
         responseTypeName: "nav_msgs/srv/GetPlan_Response",
         requestTypeHash: "RIHS01_f1bb9fab287948b4432a4a7e4f529e7ea6269cd06269ee8fcb911fdb4acd23c3",
-        responseTypeHash: "RIHS01_30a947cd360777929073296c368c591dc2117a89c15b7a975a6faa0a901836fd"
+        responseTypeHash: "RIHS01_30a947cd360777929073296c368c591dc2117a89c15b7a975a6faa0a901836fd",
+        serviceTypeHash: "RIHS01_234f7aff100f5edb8150366601687b027bcdc253db47decb88fff846193fe5e8"
     )
 
     public typealias Request = GetPlanRequest

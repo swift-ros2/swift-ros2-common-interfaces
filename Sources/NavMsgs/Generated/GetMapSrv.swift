@@ -11,7 +11,8 @@ public enum GetMapSrv: ROS2ServiceType {
         requestTypeName: "nav_msgs/srv/GetMap_Request",
         responseTypeName: "nav_msgs/srv/GetMap_Response",
         requestTypeHash: "RIHS01_b531e302f1bd6a81f8a5e03453266c378b1f711b4296000c1c0f53a40e00a7c4",
-        responseTypeHash: "RIHS01_45246f7a2ff0cbfa46e13865d4b95929ebb6d2846d1b85a20ad51030f4690dc2"
+        responseTypeHash: "RIHS01_45246f7a2ff0cbfa46e13865d4b95929ebb6d2846d1b85a20ad51030f4690dc2",
+        serviceTypeHash: "RIHS01_c8ae77c9995b3554b5ba80e4d4d443f970ac65143102a1d893ec24fc07b31147"
     )
 
     public typealias Request = GetMapRequest

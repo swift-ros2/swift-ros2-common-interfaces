@@ -11,7 +11,8 @@ public enum EmptySrv: ROS2ServiceType {
         requestTypeName: "std_srvs/srv/Empty_Request",
         responseTypeName: "std_srvs/srv/Empty_Response",
         requestTypeHash: "RIHS01_458eaf200a3f63d9cc53d19436edebc0c140ef4c93ca75d5bd4ce19fd7759e35",
-        responseTypeHash: "RIHS01_0a2858b3f60df644a61d0fa44cfc923a3d3628e0ad9c8ad8534b1a2c92a413dc"
+        responseTypeHash: "RIHS01_0a2858b3f60df644a61d0fa44cfc923a3d3628e0ad9c8ad8534b1a2c92a413dc",
+        serviceTypeHash: "RIHS01_5888399dedec5ccc85ea6451949fd2c9f97bfdf963f9a588821639fcd31b5d19"
     )
 
     public typealias Request = EmptyRequest

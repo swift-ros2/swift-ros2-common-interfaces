@@ -11,7 +11,8 @@ public enum GetInteractiveMarkersSrv: ROS2ServiceType {
         requestTypeName: "visualization_msgs/srv/GetInteractiveMarkers_Request",
         responseTypeName: "visualization_msgs/srv/GetInteractiveMarkers_Response",
         requestTypeHash: "RIHS01_7fa7e0830e3cbe9c15927a29fdc09fedcd9a86757e375f29ce6b0744cb0b6905",
-        responseTypeHash: "RIHS01_414620cf7471b5469b159989af34edd1ed9276be592e43d1b7544204f4177302"
+        responseTypeHash: "RIHS01_414620cf7471b5469b159989af34edd1ed9276be592e43d1b7544204f4177302",
+        serviceTypeHash: "RIHS01_bfdfaa861f4a8422b4ec3bd02c6681e4a45a83bdc2913d8facdf923d8ad1376a"
     )
 
     public typealias Request = GetInteractiveMarkersRequest
