@@ -1,0 +1,19 @@
+# Upstream IDL for Scripts/regenerate.sh and the oracles: <name> <url> <distribution> <commit>.
+# To move a line: git ls-remote <url> refs/heads/<distribution>, then run Scripts/regenerate.sh
+# and commit this file together with the regenerated sources.
+common_interfaces https://github.com/ros2/common_interfaces.git humble 08434490d3e4abd37ccc5462cdde69b88853b5b8
+common_interfaces https://github.com/ros2/common_interfaces.git jazzy a941f14bb318d8d904505ed935ccbb97f24a70a4
+common_interfaces https://github.com/ros2/common_interfaces.git kilted 7532fccbc3538582c6c1d187c5a809a99d8937df
+common_interfaces https://github.com/ros2/common_interfaces.git lyrical 6099c3b82abe20da50bf410e8173127ea1d83d30
+geometry2 https://github.com/ros2/geometry2.git humble 404b7224d623d614f18fa9738dbf1716403d857e
+geometry2 https://github.com/ros2/geometry2.git jazzy f702874b1c8535d6a038230ab2cda0ba5d521ebd
+geometry2 https://github.com/ros2/geometry2.git kilted f72bbbac29e326cfa47fca2482c569353351990b
+geometry2 https://github.com/ros2/geometry2.git lyrical 0b06614aaf3a50ddd1298cb0d95224b0e3821b25
+rcl_interfaces https://github.com/ros2/rcl_interfaces.git humble 82776fc9068d1e0cd4af11c2e2700195994b2eb1
+rcl_interfaces https://github.com/ros2/rcl_interfaces.git jazzy 7aa3caf43377ea6ad615bc1040832e2c7566bfbe
+rcl_interfaces https://github.com/ros2/rcl_interfaces.git kilted 45871bf69f1e5f281cd8684393b03412fe340aeb
+rcl_interfaces https://github.com/ros2/rcl_interfaces.git lyrical b90e36e4adf5ed878efa2f365a84798f782618cd
+unique_identifier_msgs https://github.com/ros2/unique_identifier_msgs.git humble 27767cefcf8a80da44641dc208c57722c28aa11c
+unique_identifier_msgs https://github.com/ros2/unique_identifier_msgs.git jazzy 901599ee92c2ee949f42a5c5d821c92b3e515d69
+unique_identifier_msgs https://github.com/ros2/unique_identifier_msgs.git kilted 21bb7a23157e5408db4a46d72dbf29980e6bb206
+unique_identifier_msgs https://github.com/ros2/unique_identifier_msgs.git lyrical b4779af6b3d3c45e710802a0e7f86113da281ae8
