@@ -52,5 +52,11 @@ let package = Package(
             .executableTarget(
                 name: "CommonInterfacesOracleCorpus",
                 dependencies: core + allInterfaces + [rosidl("BuiltinInterfaces")]),
+            .testTarget(
+                name: "CommonInterfacesTests",
+                dependencies: core + ["CommonInterfaces"]),
+            .testTarget(
+                name: "CommonInterfacesUmbrellaTests",
+                dependencies: ["CommonInterfaces"]),
         ]
 )
