@@ -29,6 +29,20 @@ covers the standard message set of a REP 2001 `ros_base` install.
 Names equal to a Swift standard-library type end in `Msg` (`StringMsg`, `BoolMsg`, `RangeMsg`).
 Next to SwiftUI, qualify `Image` and `Path` with their module (`SensorMsgs.Image`).
 
+### Hand-written helpers
+
+A few modules add helpers to the generated types, with the names they had in swift-ros2 2.3.2:
+
+- `StdMsgs`: `Header.now(frameId:)`, `Header(sec:nanosec:frameId:)` with `.sec` / `.nanosec`,
+  `Header.timestampNanoseconds`.
+- `GeometryMsgs`: `Quaternion.identity`.
+- `SensorMsgs`: `CovarianceConstants`; Swift enums for ROS constants
+  (`BatteryState.PowerSupplyStatus` / `PowerSupplyHealth` / `PowerSupplyTechnology`,
+  `RangeMsg.RadiationType`, `NavSatFix.CovarianceType`, `PointFieldDataType`) and initializers that
+  take them; `PointField.x` / `y` / `z` / `rgb` and `xyzFields` / `xyzrgbFields`;
+  `RegionOfInterest.fullFrame(width:height:)`; `Data` initializers and `dataAsData` for `Image`,
+  `CompressedImage` and `PointCloud2`; camelCase `NavSatStatus` constant aliases.
+
 ## Upstream IDL and regeneration
 
 The package has no submodules and ships no IDL: the generated Swift under

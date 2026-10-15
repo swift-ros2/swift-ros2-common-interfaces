@@ -20,15 +20,22 @@ ALLOWLIST="${2:-}"
 OUTPUT_FILE=$(mktemp)
 trap 'rm -f "$OUTPUT_FILE"' EXIT
 
-set +e
 # Digest only the library products of this package. Without an explicit
 # product list the digester can abort looking for a baseline ABI file instead
-# of reporting breakages.
-swift package diagnose-api-breaking-changes "$BASELINE" \
-    --products StdMsgs --products StdSrvs --products GeometryMsgs \
-    --products SensorMsgs --products NavMsgs --products DiagnosticMsgs \
-    --products ShapeMsgs --products StereoMsgs --products TrajectoryMsgs \
-    --products VisualizationMsgs --products Tf2Msgs --products CommonInterfaces \
+# of reporting breakages. The list comes from Package.swift, so a new module is
+# never left out.
+PRODUCTS=()
+while IFS= read -r product; do
+    PRODUCTS+=(--products "$product")
+done < <(swift package dump-package \
+    | python3 -c 'import json, sys; [print(p["name"]) for p in json.load(sys.stdin)["products"] if "library" in p["type"]]')
+if [[ ${#PRODUCTS[@]} -eq 0 ]]; then
+    echo "error: found no library products in Package.swift" >&2
+    exit 1
+fi
+
+set +e
+swift package diagnose-api-breaking-changes "$BASELINE" "${PRODUCTS[@]}" \
     2>&1 | tee "$OUTPUT_FILE"
 EXIT=${PIPESTATUS[0]}
 set -e

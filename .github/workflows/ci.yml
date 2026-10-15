@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Lint
         run: swift format lint --recursive --strict --configuration .swift-format Package.swift Sources Tests
+      - name: Oracle workflow uses the resolved rosidl version
+        run: bash Scripts/check-oracle-ref.sh
 
   build-macos:
     name: Build & Test (macOS)
@@ -78,7 +80,19 @@ jobs:
         run: sudo xcode-select -switch /Applications/Xcode_26.4.1.app
       - name: Generate DocC
         run: |
-          swift package generate-documentation --target SensorMsgs
+          swift package generate-documentation \
+            --target StdMsgs \
+            --target StdSrvs \
+            --target GeometryMsgs \
+            --target SensorMsgs \
+            --target NavMsgs \
+            --target DiagnosticMsgs \
+            --target ShapeMsgs \
+            --target StereoMsgs \
+            --target TrajectoryMsgs \
+            --target VisualizationMsgs \
+            --target Tf2Msgs \
+            --target CommonInterfaces
       - name: Check DocC coverage
         run: bash Scripts/check-docc-coverage.sh
 

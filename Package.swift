@@ -22,7 +22,7 @@ func rosidl(_ name: String) -> Target.Dependency {
 let core: [Target.Dependency] = [rosidl("SwiftROS2CDR"), rosidl("SwiftROS2Messages")]
 
 // Module dependencies follow upstream package.xml; every module a generated file imports
-// must be listed (checked in Step 7).
+// must be listed, or the module does not build.
 let interfaces: [(name: String, dependencies: [Target.Dependency])] = [
     ("StdMsgs", [rosidl("BuiltinInterfaces")]),
     ("StdSrvs", []),
