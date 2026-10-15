@@ -1,9 +1,4 @@
-// Hand-written conveniences layered on top of the swift-ros2-gen output.
-//
-// The IDL emitter is intentionally minimal — it only writes fields, an `init`,
-// and CDR encode/decode. Any helper / sentinel / convention-driven default that
-// the rest of the codebase relies on lives here so the generated files stay
-// regenerable without manual touch-ups.
+// Hand-written helpers for the generated `Quaternion`.
 
 import SwiftROS2Messages
 
