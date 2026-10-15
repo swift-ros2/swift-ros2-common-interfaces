@@ -12,6 +12,7 @@ on:
 jobs:
   interfaces:
     # The rosidl version Package.resolved pins; it moves with Package.resolved, never @main.
-    uses: swift-ros2/swift-ros2-rosidl/.github/workflows/interface-oracles.yml@1.0.0-rc.1
+    # Scripts/check-oracle-ref.sh (CI lint job) fails when the two differ.
+    uses: swift-ros2/swift-ros2-rosidl/.github/workflows/interface-oracles.yml@1.0.0-rc.2
     with:
       corpus-product: CommonInterfacesOracleCorpus

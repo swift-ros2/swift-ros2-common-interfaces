@@ -1,4 +1,16 @@
 version: 1
 builder:
   configs:
-    - documentation_targets: [StdMsgs, GeometryMsgs, SensorMsgs, NavMsgs, DiagnosticMsgs, Tf2Msgs]
+    - documentation_targets:
+        - StdMsgs
+        - StdSrvs
+        - GeometryMsgs
+        - SensorMsgs
+        - NavMsgs
+        - DiagnosticMsgs
+        - ShapeMsgs
+        - StereoMsgs
+        - TrajectoryMsgs
+        - VisualizationMsgs
+        - Tf2Msgs
+        - CommonInterfaces
