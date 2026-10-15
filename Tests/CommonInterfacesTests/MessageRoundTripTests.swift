@@ -574,22 +574,11 @@ final class MessageRoundTripTests: XCTestCase {
         let decoder = try CDRDecoder(data: encoder.getData())
         let decoded = try CameraInfo(from: decoder)
 
-        XCTAssertEqual(decoded.height, 0)
-        XCTAssertEqual(decoded.width, 0)
-        // Phase 4: the generator emits IDL-declared zero defaults, but
-        // `SensorMsgsExtensions` adds a zero-arg compatibility initializer
-        // that restores the pre-Phase-4 hand-written conventions —
-        // `distortion_model = "plumb_bob"` and `r = identity`. Callers
-        // that want true zeros should pass them explicitly to the
-        // generated multi-arg initializer.
-        XCTAssertEqual(decoded.distortionModel, "plumb_bob")
-        XCTAssertEqual(decoded.d.count, 0)
-        XCTAssertEqual(decoded.k.count, 9)
-        XCTAssertEqual(
-            decoded.r, [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0])
-        XCTAssertEqual(decoded.p.count, 12)
-        XCTAssertEqual(decoded.binningX, 0)
-        XCTAssertEqual(decoded.binningY, 0)
+        XCTAssertEqual(decoded, original)
+        XCTAssertEqual(decoded.distortionModel, "")
+        XCTAssertEqual(decoded.k, Array(repeating: 0.0, count: 9))
+        XCTAssertEqual(decoded.r, Array(repeating: 0.0, count: 9))
+        XCTAssertEqual(decoded.p, Array(repeating: 0.0, count: 12))
     }
 
     func testCameraInfoRoundTrip() throws {
