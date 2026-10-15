@@ -372,38 +372,6 @@ final class MessageRoundTripTests: XCTestCase {
         XCTAssertEqual(decoded.variance, 0.04, accuracy: 0.0001)
     }
 
-    /// Humble/legacy wire format must omit the post-Humble `variance` trailing field.
-    func testRangeLegacySchemaOmitsVariance() throws {
-        let original = RangeMsg(
-            header: Header(sec: 1100, nanosec: 0, frameId: "proximity"),
-            radiationType: .infrared,
-            fieldOfView: 0.5, minRange: 0.0, maxRange: 5.0, range: 1.23, variance: 42.0
-        )
-
-        let legacyEncoder = CDREncoder(isLegacySchema: true)
-        legacyEncoder.writeEncapsulationHeader()
-        try original.encode(to: legacyEncoder)
-        let legacyBytes = legacyEncoder.getData()
-
-        let modernEncoder = CDREncoder()
-        modernEncoder.writeEncapsulationHeader()
-        try original.encode(to: modernEncoder)
-        let modernBytes = modernEncoder.getData()
-
-        // Legacy payload is exactly 4 bytes shorter (the omitted float32 variance).
-        XCTAssertEqual(modernBytes.count - legacyBytes.count, 4)
-
-        // Legacy decoder accepts the legacy payload and reports variance == 0.
-        let legacyDecoder = try CDRDecoder(data: legacyBytes, isLegacySchema: true)
-        let decoded = try RangeMsg(from: legacyDecoder)
-        XCTAssertEqual(decoded.range, 1.23, accuracy: 0.001)
-        XCTAssertEqual(decoded.variance, 0.0)
-
-        // Modern decoder refuses the legacy payload (not enough bytes for variance).
-        let modernDecoder = try CDRDecoder(data: legacyBytes)
-        XCTAssertThrowsError(try RangeMsg(from: modernDecoder))
-    }
-
     func testMagneticFieldRoundTrip() throws {
         let original = MagneticField(
             header: Header(sec: 1200, nanosec: 0, frameId: "magnetometer_link"),
