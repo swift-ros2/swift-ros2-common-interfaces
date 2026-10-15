@@ -13,30 +13,6 @@ import StdMsgs
 import SwiftROS2CDR
 import SwiftROS2Messages
 
-// MARK: - CameraInfo
-
-extension CameraInfo {
-    /// Zero-argument compatibility initializer matching the swift-ros2 2.3.2
-    /// shape: `distortionModel` defaults to ROS's canonical
-    /// `"plumb_bob"` model and `r` defaults to the 3x3 identity rectification
-    /// matrix instead of all-zeros.
-    public init() {
-        self.init(
-            header: Header(),
-            height: 0,
-            width: 0,
-            distortionModel: "plumb_bob",
-            d: [],
-            k: Array(repeating: 0.0, count: 9),
-            r: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0],
-            p: Array(repeating: 0.0, count: 12),
-            binningX: 0,
-            binningY: 0,
-            roi: RegionOfInterest()
-        )
-    }
-}
-
 // MARK: - Imu
 
 extension Imu {
@@ -100,9 +76,15 @@ extension BatteryState {
     /// Convenience initializer matching the swift-ros2 2.3.2 shape.
     /// Accepts the typed Swift enums for `powerSupplyStatus` /
     /// `powerSupplyHealth` / `powerSupplyTechnology` and stores the underlying
-    /// `UInt8` raw value. All parameters default so callers can construct a
-    /// legacy-shaped `BatteryState` from any subset of fields without having
-    /// to fall back to the raw `UInt8` initializer.
+    /// `UInt8` raw value. Unlike the generated initializer, the measurements
+    /// default to NaN ("not measured", as `sensor_msgs/BatteryState` asks) and
+    /// `present` to `true`.
+    ///
+    /// The generated initializer has the same labels with `UInt8` and zero
+    /// defaults. A call that passes none of the typed enums uses the generated
+    /// initializer (this one is the disfavored overload), so for example
+    /// `BatteryState(voltage: 3.7)` compiles and gets the generated defaults.
+    @_disfavoredOverload
     public init(
         header: Header = Header(),
         voltage: Float = 0.0,
@@ -138,30 +120,6 @@ extension BatteryState {
             cellTemperature: cellTemperature,
             location: location,
             serialNumber: serialNumber
-        )
-    }
-
-    /// Zero-argument compatibility initializer matching the swift-ros2 2.3.2
-    /// defaults: NaN telemetry fields, `present == true`, and
-    /// `unknown` enum values for the three power-supply state fields.
-    public init() {
-        self.init(
-            header: Header(),
-            voltage: 0.0,
-            temperature: .nan,
-            current: .nan,
-            charge: .nan,
-            capacity: .nan,
-            designCapacity: .nan,
-            percentage: .nan,
-            powerSupplyStatus: .unknown,
-            powerSupplyHealth: .unknown,
-            powerSupplyTechnology: .unknown,
-            present: true,
-            cellVoltage: [],
-            cellTemperature: [],
-            location: "",
-            serialNumber: ""
         )
     }
 }
@@ -256,16 +214,6 @@ extension NavSatStatus {
     public static var serviceCOMPASS: UInt16 { Self.SERVICE_COMPASS }
     /// Alias of `SERVICE_GALILEO`.
     public static var serviceGALILEO: UInt16 { Self.SERVICE_GALILEO }
-
-    /// Zero-argument compatibility initializer matching the swift-ros2 2.3.2
-    /// defaults: `status == STATUS_FIX (0)` and
-    /// `service == SERVICE_GPS (1)`. The generated initializer's
-    /// `STATUS_UNKNOWN` / `SERVICE_UNKNOWN` defaults silently broke every
-    /// caller that constructed a default `NavSatStatus()` and expected a
-    /// "GPS fix acquired" sentinel.
-    public init() {
-        self.init(status: Self.STATUS_FIX, service: Self.SERVICE_GPS)
-    }
 }
 
 // MARK: - PointField
