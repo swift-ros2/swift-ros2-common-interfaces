@@ -1,10 +1,6 @@
-// Hand-written conveniences layered on top of the generated `sensor_msgs` types.
-// They keep the swift-ros2 2.3.2 API (Swift enums for ROS constants, factory
-// helpers, `Data`-typed blob initializers) so existing callers keep compiling
-// without the generator having to learn each special case.
-//
-// The IDL emitter is intentionally minimal — it only writes fields, an `init`,
-// and CDR encode / decode. Anything else lives here.
+// Hand-written helpers for the generated `sensor_msgs` types: Swift enums for ROS constants,
+// factory helpers and `Data`-typed blob initializers, with the names and signatures they had in
+// swift-ros2 2.3.2. The generator writes only fields, the initializer and CDR encode / decode.
 
 import BuiltinInterfaces
 import Foundation
@@ -174,10 +170,8 @@ extension NavSatFix {
 // MARK: - NavSatStatus
 
 extension NavSatStatus {
-    /// camelCase aliases mirroring the legacy hand-written constants. The
-    /// generator emits `STATUS_FIX` / `SERVICE_GPS` (matching upstream IDL);
-    /// these aliases preserve the shorter `statusFix` / `serviceGPS` form
-    /// used pervasively in caller code and tests.
+    /// camelCase aliases of the generated `STATUS_*` / `SERVICE_*` constants, the
+    /// names swift-ros2 2.3.2 used. Alias of `STATUS_NO_FIX`.
     public static var statusNoFix: Int8 { Self.STATUS_NO_FIX }
     /// Alias of `STATUS_FIX`.
     public static var statusFix: Int8 { Self.STATUS_FIX }
