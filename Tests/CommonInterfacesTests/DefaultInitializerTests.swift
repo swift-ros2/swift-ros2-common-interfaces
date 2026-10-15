@@ -4,6 +4,13 @@ import XCTest
 /// The zero-argument form of a message is the generated initializer with every default, so a
 /// type has one default value whether or not a label is written.
 final class DefaultInitializerTests: XCTestCase {
+    /// `Quaternion()` is the identity (the IDL default `w = 1`), so a default `Imu` publishes a
+    /// valid orientation without a hand-written initializer.
+    func testImuZeroArgumentHasIdentityOrientation() {
+        XCTAssertEqual(Imu(), Imu(header: Header()))
+        XCTAssertEqual(Imu().orientation, Quaternion(x: 0, y: 0, z: 0, w: 1))
+    }
+
     func testCameraInfoZeroArgumentMatchesLabelledDefaults() {
         XCTAssertEqual(CameraInfo(), CameraInfo(header: Header()))
         XCTAssertEqual(CameraInfo().distortionModel, "")

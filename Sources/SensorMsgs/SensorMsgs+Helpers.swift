@@ -13,26 +13,6 @@ import StdMsgs
 import SwiftROS2CDR
 import SwiftROS2Messages
 
-// MARK: - Imu
-
-extension Imu {
-    /// Zero-argument compatibility initializer matching the swift-ros2 2.3.2
-    /// shape: `orientation` defaults to the identity quaternion
-    /// (w = 1) instead of all-zero, which is the ROS convention for
-    /// "orientation unknown" with a non-degenerate rotation.
-    public init() {
-        self.init(
-            header: Header(),
-            orientation: Quaternion.identity,
-            orientationCovariance: Array(repeating: 0.0, count: 9),
-            angularVelocity: Vector3(),
-            angularVelocityCovariance: Array(repeating: 0.0, count: 9),
-            linearAcceleration: Vector3(),
-            linearAccelerationCovariance: Array(repeating: 0.0, count: 9)
-        )
-    }
-}
-
 // MARK: - BatteryState
 
 extension BatteryState {
