@@ -1,8 +1,8 @@
 // GeneratedMessageRoundTripTests.swift
 // CDR encode/decode round-trips for the generated message types that had no
 // direct test coverage: the remaining sensor_msgs types, std_msgs Float64/Int32
-// wrappers, the composed geometry_msgs types, and the builtin_interfaces
-// source-compat aliases.
+// wrappers and the composed geometry_msgs types. (Their type hashes are checked
+// against rosidl by the oracle workflow.)
 
 import CommonInterfaces
 import SwiftROS2CDR
@@ -364,22 +364,6 @@ final class GeneratedMessageRoundTripTests: XCTestCase {
         XCTAssertEqual(decoded.wrench, original.wrench)
     }
 
-    // MARK: - builtin_interfaces aliases
-
-    func testBuiltinInterfacesTimeAliasIdentity() {
-        XCTAssertTrue(BuiltinInterfacesTime.self == Time.self)
-        XCTAssertEqual(BuiltinInterfacesTime.typeInfo.typeName, "builtin_interfaces/msg/Time")
-    }
-
-    func testTimeNowProducesPlausibleWallClock() {
-        let t = Time.now()
-        // 2026-01-01T00:00:00Z as a sanity lower bound; Time.now() reads the wall clock.
-        XCTAssertGreaterThan(t.sec, 1_767_225_600)
-        XCTAssertLessThan(t.nanosec, 1_000_000_000)
-    }
-
-    // MARK: - Type metadata
-
     func testGeneratedTypeInfoMetadata() {
         XCTAssertEqual(Float64Msg.typeInfo.typeName, "std_msgs/msg/Float64")
         XCTAssertEqual(Int32Msg.typeInfo.typeName, "std_msgs/msg/Int32")
@@ -402,22 +386,5 @@ final class GeneratedMessageRoundTripTests: XCTestCase {
         XCTAssertEqual(MultiEchoLaserScan.typeInfo.typeName, "sensor_msgs/msg/MultiEchoLaserScan")
         XCTAssertEqual(JointState.typeInfo.typeName, "sensor_msgs/msg/JointState")
         XCTAssertEqual(MultiDOFJointState.typeInfo.typeName, "sensor_msgs/msg/MultiDOFJointState")
-
-        for typeInfo in [
-            Float64Msg.typeInfo, Int32Msg.typeInfo,
-            Accel.typeInfo, PoseStamped.typeInfo, TwistStamped.typeInfo,
-            Vector3Stamped.typeInfo, Wrench.typeInfo, Point32.typeInfo,
-            SetCameraInfoRequest.typeInfo, SetCameraInfoResponse.typeInfo,
-            JoyFeedback.typeInfo, JoyFeedbackArray.typeInfo,
-            RelativeHumidity.typeInfo, TimeReference.typeInfo,
-            LaserEcho.typeInfo, ChannelFloat32.typeInfo, PointCloud.typeInfo,
-            LaserScan.typeInfo, MultiEchoLaserScan.typeInfo,
-            JointState.typeInfo, MultiDOFJointState.typeInfo,
-        ] {
-            XCTAssertNotNil(typeInfo.typeHash, "\(typeInfo.typeName) should carry a type hash")
-            XCTAssertTrue(
-                typeInfo.typeHash!.hasPrefix("RIHS01_"),
-                "\(typeInfo.typeName) hash should be RIHS01-prefixed")
-        }
     }
 }

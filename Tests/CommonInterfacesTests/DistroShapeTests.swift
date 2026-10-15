@@ -18,6 +18,8 @@ final class DistroShapeTests: XCTestCase {
         let decoded = try RangeMsg(from: CDRDecoder(data: humble.getData(), isLegacySchema: true))
         XCTAssertEqual(decoded.range, 1.25)
         XCTAssertEqual(decoded.variance, 0)
+        // A modern decoder needs the variance bytes the Humble payload lacks.
+        XCTAssertThrowsError(try RangeMsg(from: CDRDecoder(data: humble.getData())))
     }
 
     func testRangeHashPerDistribution() {
