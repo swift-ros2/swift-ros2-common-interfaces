@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0
+
+First stable release; the public API is now covered by semantic versioning. Requires
+swift-ros2-rosidl 1.0.0 (#17); regenerating with it changes no generated file, so the code is the
+same as 1.0.0-rc.3, which passed live interop through swift-ros2 against ROS 2 Humble, Jazzy,
+Kilted and Lyrical hosts over Zenoh and DDS.
+
 ## 1.0.0-rc.3
 
 Last release candidate before the 1.0.0 API freeze.
