@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.0.0-rc.3
+
+Last release candidate before the 1.0.0 API freeze.
+
+- Requires swift-ros2-rosidl 1.0.0-rc.3 and is regenerated with it: generated `encode(to:)`
+  throws `CDRSerializationError` for fixed arrays and bounded sequences of the wrong length
+  instead of trapping, bounded strings are length-checked on encode and decode, service umbrella
+  files no longer import `SwiftROS2CDR`, and `// Source:` lines use `<pkg>/<kind>/<Type>.<kind>`.
+  Type hashes and field layouts are unchanged (#15).
+- **Behavior change (sensor_msgs):** the zero-argument initializers `CameraInfo()`,
+  `NavSatStatus()`, `BatteryState()` and `Imu()` now give the IDL default values, like the
+  generated initializers (`NavSatStatus()` is `STATUS_UNKNOWN` / 0; `CameraInfo()` no longer sets
+  `plumb_bob` and identity matrices). The typed `BatteryState` convenience initializer keeps its
+  2.x defaults and is a disfavored overload, so partial-argument calls such as
+  `BatteryState(voltage: 3.7)` compile (#9).
+- `Header.now` reuses `Time.now`; helper documentation describes them as API (#10).
+- Tests that duplicated others or covered swift-ros2-rosidl code are removed (#11).
+- CI builds DocC for every module, keeps the oracle workflow pin and product lists in sync with
+  `Package.swift`, caches the Swift toolchain and SDK downloads, and runs on PRs into any branch
+  (#12, #13, #14).
+
 ## 1.0.0-rc.2
 
 - Requires swift-ros2-rosidl 1.0.0-rc.2.
